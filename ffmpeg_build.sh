@@ -24,11 +24,11 @@ make clean
 --sysroot="$NDK_SYSROOT" \
 --enable-pic \
 --enable-libx264 \
---enable-libass \
---enable-libfreetype \
---enable-libfribidi \
---enable-fontconfig \
 --enable-pthreads \
+--disable-avfilter \
+--disable-bsfs \
+--disable-filters \
+--disable-devices \
 --disable-debug \
 --disable-ffserver \
 --enable-version3 \
@@ -44,7 +44,7 @@ make clean
 --prefix="${2}/build/${1}" \
 --extra-cflags="-I${TOOLCHAIN_PREFIX}/include $CFLAGS" \
 --extra-ldflags="-L${TOOLCHAIN_PREFIX}/lib $LDFLAGS" \
---extra-libs="-lpng -lexpat -lm" \
+--extra-libs="-lm" \
 --extra-cxxflags="$CXX_FLAGS" || exit 1
 
 make -j${NUMBER_OF_CORES} && make install || exit 1
